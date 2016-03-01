@@ -7,3 +7,4 @@ fi
 for i in ~/bashrc.d/*.bash; do 
   . "$i"
 done
+unset -v i
