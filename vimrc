@@ -30,7 +30,7 @@ set incsearch
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 
 " Minimal number of screen lines to keep above and below the cursor
-set scrolloff=10
+set scrolloff=99
 
 " don't blink and be quiet
 set novisualbell
