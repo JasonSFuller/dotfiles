@@ -2,7 +2,7 @@
 
 function killwithfire {
   if ! which gdb >&/dev/null; then
-    echo "ERROR: gdb could not be found."
+    echo "ERROR: gdb could not be found." >&2
     exit 1
   fi
 
