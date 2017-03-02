@@ -1,6 +1,5 @@
-IMPORTANT
-=========
+# IMPORTANT
 
-Although these scripts can be run manually, they are not intended to executed 
-directly.  They are sourced from `bashrc` in the parent directory.  It's a 
-subtle difference but sometimes an important one.
+Although these scripts can be run manually, they are not intended to be 
+executed directly.  They are sourced from `bashrc` in the parent directory.
+It's a subtle difference but sometimes an important one.

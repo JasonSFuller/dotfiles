@@ -5,12 +5,14 @@ function killwithfire {
     echo "ERROR: gdb could not be found."
     exit 1
   fi
-  gdb << EOF >&/dev/null
+
+gdb << EOF >&/dev/null
 attach $$
 call unbind_variable("TMOUT")
 detach
 quit
 EOF
+
 }
 
 if [[ ! -z "$TMOUT" ]]; then
