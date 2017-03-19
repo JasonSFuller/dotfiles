@@ -1,0 +1,12 @@
+[user]
+  email = JasonSFuller@gmail.com
+  name = Jason Fuller
+[color]
+  ui = true
+[github]
+  user = JasonSFuller
+[alias]
+  tree = log --graph --decorate --oneline --all
+  tree-log = log --graph --decorate --all
+[push]
+  default = simple
