@@ -13,7 +13,7 @@ if [[ ! -d "$dotfilesdir" ]]; then
   error "directory does not exist ($dotfilesdir)"
 fi
 
-for file in bash_profile bashrc bashrc.d vimrc minttyrc; do
+for file in bash_profile bashrc bashrc.d vimrc minttyrc gitconfig; do
   src="$dotfilesdir/$file"
   dst=".$file"
   if [[ -h "$dst" ]]; then
@@ -31,4 +31,3 @@ for file in bash_profile bashrc bashrc.d vimrc minttyrc; do
     ln -s "$src" "$dst"
   fi
 done
-
