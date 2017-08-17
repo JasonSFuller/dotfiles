@@ -26,11 +26,11 @@ set hlsearch
 " highlight as you type you search phrase
 set incsearch
 
-" what to show when I hit :set list
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
-
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=99
+
+" Show line numbers
+set number
 
 " don't blink and be quiet
 set novisualbell
@@ -73,8 +73,8 @@ set shiftwidth=4
 " wrap lines
 set wrap
 
-" expand tabs to spaces (note: bash scripts don't like tabs)
-set expandtab
+" expand tabs to spaces
+set noexpandtab
 
 " smarttab = use tabs at the start of a line, spaces elsewhere
 set nosmarttab
@@ -95,7 +95,8 @@ syntax on
 set background=dark
 
 " use a nice color scheme
-colorscheme elflord
+"colorscheme elflord
+colorscheme monokai
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
