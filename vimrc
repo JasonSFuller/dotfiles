@@ -95,7 +95,6 @@ syntax on
 set background=dark
 
 " use a nice color scheme
-"colorscheme elflord
 colorscheme monokai
 
 " show a line for when I go over 80 characters (requires vim 7.3+)
