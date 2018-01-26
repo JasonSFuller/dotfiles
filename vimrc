@@ -70,7 +70,7 @@ set softtabstop=4
 " unify
 set shiftwidth=4
 
-" wrap lines
+" don't wrap lines
 set nowrap
 
 " expand tabs to spaces
@@ -95,7 +95,6 @@ syntax on
 set background=dark
 
 " use a nice color scheme
-"colorscheme elflord
 colorscheme monokai
 
 " show a line for when I go over 80 characters (requires vim 7.3+)
@@ -130,3 +129,7 @@ endif
 if &term == "screen" || &term == "xterm"
   set title
 endif
+
+" write the file as root (if i've changed it, but forgot to sudo, just :w!!)
+cmap w!! w !sudo tee > /dev/null %
+

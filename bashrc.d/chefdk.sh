@@ -11,6 +11,5 @@ if [[ -d /opt/chefdk ]]; then
     COMPREPLY=($(compgen -W "$COMMANDS" -- ${COMP_WORDS[COMP_CWORD]} ))
   }
   complete -F _chef_comp chef
-
 fi
 
