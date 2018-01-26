@@ -71,7 +71,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " wrap lines
-set wrap
+set nowrap
 
 " expand tabs to spaces
 set noexpandtab
@@ -98,6 +98,15 @@ set background=dark
 "colorscheme elflord
 colorscheme monokai
 
+" show a line for when I go over 80 characters (requires vim 7.3+)
+"set colorcolumn=81
+let &colorcolumn=join(range(81,999),",")
+
+" override some of monokai's default colors to suit my preferences
+hi Search ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi ColorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin stuff
@@ -113,7 +122,7 @@ map <silent><F2> :PREVCOLOR<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " update the terminal title when editing a file
-let &titlestring = hostname() . "[vim " . expand("%:t") . "]"
+let &titlestring = hostname() . " [vim " . expand("%:p") . "]"
 if &term == "screen"
   set t_ts=^[k
   set t_fs=^[\
