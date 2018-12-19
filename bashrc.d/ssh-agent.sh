@@ -2,6 +2,7 @@ function load_ssh_agent {
 
   echo "loading agent..."
   ssh-agent > "$HOME/.ssh/ssh-agent"
+  chmod 0600  "$HOME/.ssh/ssh-agent"
   cat "$HOME/.ssh/ssh-agent"
   source "$HOME/.ssh/ssh-agent"
 
