@@ -66,7 +66,12 @@ function check_ssh_agent {
   fi
 }
 
-check_ssh_agent
+# At work, my $HOME is usually "roaming."  I don't want ssh-agent running
+# all over the place, so only launch it from my local laptop/desktop.
+# I'll forward ssh-agent with -A or from my ~/.ssh/config when I need it.
+if [[ "$(stat -f -c %T "$HOME")" != 'nfs' ]]; then
+  check_ssh_agent
+fi
 
 unset load_ssh_agent
 unset check_ssh_agent
