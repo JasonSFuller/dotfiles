@@ -69,7 +69,7 @@ function check_ssh_agent {
 # On hosts where you want the agent to start:
 #   echo "$HOSTNAME" >> "$HOME/.ssh/ssh-agent-hosts"
 
-if grep -q "^${HOSTNAME}\$" "$HOME/.ssh/ssh-agent-hosts"; then
+if grep "^${HOSTNAME}\$" "$HOME/.ssh/ssh-agent-hosts" &>/dev/null; then
   check_ssh_agent
 fi
 
