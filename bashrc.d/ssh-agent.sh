@@ -59,17 +59,17 @@ function check_ssh_agent {
     return 1
   fi
     
-  if ! grep -q ssh-agent "/proc/$SSH_AGENT_PID/cmdline"; then
+  if ! pgrep ssh-agent | grep -q "^${SSH_AGENT_PID}\$"; then
     echo "INFO: PID ($SSH_AGENT_PID) not ssh-agent or not found"
     load_ssh_agent
     return
   fi
 }
 
-# At work, my $HOME is usually "roaming."  I don't want ssh-agent running
-# all over the place, so only launch it from my local laptop/desktop.
-# I'll forward ssh-agent with -A or from my ~/.ssh/config when I need it.
-if [[ "$(stat -f -c %T "$HOME")" != 'nfs' ]]; then
+# On hosts where you want the agent to start:
+#   echo "$HOSTNAME" >> "$HOME/.ssh/ssh-agent-hosts"
+
+if grep -q "^${HOSTNAME}\$" "$HOME/.ssh/ssh-agent-hosts"; then
   check_ssh_agent
 fi
 
