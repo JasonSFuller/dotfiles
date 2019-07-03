@@ -24,6 +24,7 @@ for file in bash_profile bashrc bashrc.d vim vimrc minttyrc gitconfig; do
   if [[ -f "$dst" || -d "$dst" ]]; then
     backup="$dst.$(date +%Y%m%d%H%M%S)"
     warn "backing up existing file/dir '$dst' ($backup)"
+    if [[ -f "$dst" ]]; then echo "  diff -u '$HOME/$backup' '$HOME/$dst'"; fi
     mv "$dst" "$backup"
   fi
   if [[ -f "$src" || -d "$src" ]]; then
@@ -31,3 +32,11 @@ for file in bash_profile bashrc bashrc.d vim vimrc minttyrc gitconfig; do
     ln -s "$src" "$dst"
   fi
 done
+
+echo
+if [[ -f $HOME/.ssh/id_* ]]; then
+  info "local ssh keys found"
+fi
+echo -e "\nIf this is a local machine (where you want ssh-agent running), run this:"
+echo '   echo "$HOSTNAME" > "$HOME/.ssh/ssh-agent-hosts"'
+echo
