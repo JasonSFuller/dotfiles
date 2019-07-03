@@ -11,4 +11,5 @@ else
   alias l='ls -l --color=auto'
   alias ll='if [[ $PWD == $HOME ]]; then ls -l --color=auto; else ls -la --color=auto; fi'
   alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
 fi
