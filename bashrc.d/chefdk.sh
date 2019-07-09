@@ -1,7 +1,6 @@
 #!/bin/bash
 
 if [[ -d /opt/chefdk ]]; then
-  export EDITOR="vim"
   export PATH="/opt/chefdk/bin:$HOME/.chefdk/gem/ruby/2.4.0/bin:/opt/chefdk/embedded/bin:$PATH:/opt/chefdk/gitbin"
   export GEM_ROOT="/opt/chefdk/embedded/lib/ruby/gems/2.4.0"
   export GEM_HOME="$HOME/.chefdk/gem/ruby/2.4.0"
