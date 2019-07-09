@@ -33,9 +33,7 @@ set scrolloff=99
 set number
 
 " don't blink and be quiet
-set novisualbell
-set noerrorbells
-set t_vb=
+set vb t_vb=
 
 " When nonempty, this option determines the content of the status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
