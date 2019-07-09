@@ -6,7 +6,7 @@
 # must attach to your login shell.  If run as a script, it will 
 # be a child process and the TMOUT variable won't be unset 
 # properly.  I could probably be more clever and find it, but 
-# this "works for me" so... meh.
+# meh... this "works for me!"  =)
 
 function killwithfire {
   if ! which gdb >&/dev/null; then
@@ -14,20 +14,17 @@ function killwithfire {
     exit 1
   fi
 
-gdb << EOF >&/dev/null
-attach $$
-call unbind_variable("TMOUT")
-detach
-quit
-EOF
-
+  gdb <<- EOF >&/dev/null
+	attach $$
+	call unbind_variable("TMOUT")
+	detach
+	quit
+	EOF
 }
 
 if [[ ! -z "$TMOUT" ]]; then
-  unset TMOUT >&/dev/null
-  if [[ $? -ne 0 ]]; then killwithfire; fi
-  # 10 hours
-  export TMOUT=36000
+  unset TMOUT >&/dev/null || killwithfire
+  export TMOUT="36000" # 10 hours
 fi
 
-unset killwithfire
+unset -f killwithfire
