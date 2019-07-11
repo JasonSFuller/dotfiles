@@ -3,19 +3,19 @@
 # accepts an array of directories to be added to $PATH
 
 function add_paths {
-  #local dirs=$@
-  local -n dirs="$1"
+  #local -n dirs="$1" # "-n" only in bash 4.3+
+  local dirs=("$@")
   local paths
-
 
   for dir in "${dirs[@]}"
   do
+    dir=$(echo "$dir" | tr -s / | sed 's:/$::') # remove extra+trailing slashes
     if [[ ! -d "$dir" ]]; then continue; fi
-    dir=$(echo "$dir" | tr -s / | sed 's:/$::')
     # $PATH is a string and not an array, so convert it for precision and safety
     IFS=$':' read -r -d '' -a paths <<< "$PATH"
-    for path in "${paths[@]}"
-    do
+    for path in "${paths[@]}" # loop through $PATH
+    do # and if the dir is already in $PATH, skip to the next $dir
+      path="${path%%[[:space:]]*}" # trim trailing white space
       if [[ "$dir" == "$path" ]]; then continue 2; fi
     done
     export PATH="$PATH:$dir"
@@ -28,12 +28,7 @@ new_path_dirs=(
   "$HOME/.local/bin"
 )
 
-# TODO BUG
-#   "$HOME/.local/bin" gets duplicated (only twice) after subsequent runs,
-#   ...maybe the tail of a loop is skipped?  to duplicate run bash then bash 
-#   again and echo $PATH
-
-add_paths new_path_dirs
+add_paths "${new_path_dirs[@]}"
 
 unset -f add_path
 unset -v new_path_dirs
