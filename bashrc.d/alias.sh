@@ -12,4 +12,5 @@ fi
 alias l='ls -l'
 alias l.='ls -lad .*'
 alias ll='ls -la'
+alias now='date +%Y%m%d%H%M%S'
 
