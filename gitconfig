@@ -10,3 +10,5 @@
   tree-log = log --graph --decorate --all
 [push]
   default = simple
+[core]
+	pager = 
