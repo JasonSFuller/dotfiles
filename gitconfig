@@ -11,4 +11,7 @@
 [push]
   default = simple
 [core]
-	pager = 
+  pager = 
+[credential]
+  helper = cache --timeout 3600
+
