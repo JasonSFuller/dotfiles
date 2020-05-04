@@ -29,11 +29,6 @@ function check_ssh_agent {
      return 1
   fi
     
-  if [[ ! -w "$HOME/.ssh/ssh-agent" ]]; then
-     echo "ERROR: cannot write ssh-agent env file" >&2
-     return 1
-  fi
-
   source "$HOME/.ssh/ssh-agent"
 
   if [[ -z "$SSH_AUTH_SOCK" ]]; then
