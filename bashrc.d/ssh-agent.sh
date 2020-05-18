@@ -43,6 +43,10 @@ function check_ssh_agent {
     load_ssh_agent
   fi
 
+  if [[ -S "$SSH_AUTH_SOCK" ]] && ! export -p | grep -qF ' SSH_AUTH_SOCK='; then
+    export SSH_AUTH_SOCK
+  fi
+
 }
 
 # On hosts where you want the agent to start:
