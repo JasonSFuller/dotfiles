@@ -34,6 +34,12 @@ new_path_dirs=(
   "."
   "$HOME/bin"
   "$HOME/.local/bin"
+  "/usr/local/bin"
+  "/usr/local/sbin"
+  "/usr/bin"
+  "/usr/sbin"
+  "/bin"
+  "/sbin"
 )
 
 add_paths "${new_path_dirs[@]}"
