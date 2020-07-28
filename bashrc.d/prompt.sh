@@ -1,3 +1,5 @@
+# TODO look at /usr/lib/git-core/git-sh-prompt for inspiration on git prompt
+
 # Is this an interactive shell?
 function generate_prompt {
 
@@ -15,6 +17,7 @@ function generate_prompt {
     # characters" for screen drawing things like bash's shopt checkwinsize.
     # if you remove them, your terminal will draw things weirdly.  ask me 
     # how i know.  =/
+
     if grep -qi ubuntu /etc/*release &>/dev/null; then
       local title="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h:\w\a\]"
     fi
