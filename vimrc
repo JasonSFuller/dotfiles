@@ -131,3 +131,8 @@ endif
 " write the file as root (if i've changed it, but forgot to sudo, just :w!!)
 cmap w!! w !sudo tee > /dev/null %
 
+" to go where i last left off in a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
