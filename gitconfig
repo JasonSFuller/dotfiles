@@ -18,7 +18,13 @@
   unstage = reset HEAD --
   last = log -1 HEAD
 [push]
+  # from `man git-config`: in centralized workflow ... refuse to push if the
+  # upstream branch's name is different from the local one ... this is the
+  # safest option
   default = simple
+[pull]
+  # from `man git-config`: only such fast-forward merges are allowed
+  # https://blog.sffc.xyz/post/185195398930/why-you-should-use-git-pull-ff-only-git-is-a
+  ff = only
 [credential]
   helper = cache --timeout 3600
-
