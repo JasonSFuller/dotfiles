@@ -17,6 +17,8 @@
   st = status
   unstage = reset HEAD --
   last = log -1 HEAD
+  # list the name/path (from proj root) of ALL tracked files in the current branch
+  tracked = ls-tree -r HEAD --name-only --full-tree
 [push]
   # from `man git-config`: in centralized workflow ... refuse to push if the
   # upstream branch's name is different from the local one ... this is the
