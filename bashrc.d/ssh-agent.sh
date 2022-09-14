@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function load_ssh_agent {
 
   # if you're on a distro running a desktop with gnome keyring, check for the
@@ -16,6 +18,7 @@ function load_ssh_agent {
 
   chmod 0600 "$HOME/.ssh/ssh-agent"
   cat        "$HOME/.ssh/ssh-agent"
+  # shellcheck source=/dev/null
   source     "$HOME/.ssh/ssh-agent"
 
 }
@@ -36,6 +39,7 @@ function check_ssh_agent {
     fi
   fi
 
+  # shellcheck source=/dev/null
   source "$HOME/.ssh/ssh-agent"
 
   if [[ ! -S "$SSH_AUTH_SOCK" ]]; then
