@@ -1,18 +1,58 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------------------------------------
+"  General
+"-------------------------------------------------------------------------------
 
-" get out of horrible vi-compatible mode
+" get out of horrible vi-compatible mode; should be at top; see :help compatible
 set nocompatible
 
-" none of these should be word dividers, so make them not be
-set iskeyword+=_,$,@,%,#,-,:
+"-------------------------------------------------------------------------------
+"  Plugins
+"-------------------------------------------------------------------------------
 
+" https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
 
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual Cues
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" My plugins
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'tomasiser/vim-code-dark'
+call plug#end()
+
+"-------------------------------------------------------------------------------
+"  Colors
+"-------------------------------------------------------------------------------
+
+" my terminal supports 256 colors
+set t_Co=256
+
+" use syntax highlighting
+syntax on
+
+" we are using a dark background
+set background=dark
+
+" use a nice color scheme
+let g:airline_theme = 'codedark'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 0
+colorscheme codedark
+
+" show a line for when I go over 80 characters (requires vim 7.3+)
+let &colorcolumn=join(range(81,300),",")
+
+"-------------------------------------------------------------------------------
+" Visual
+"-------------------------------------------------------------------------------
 
 " show matching brackets for a moment
 set showmatch
@@ -35,88 +75,33 @@ set number
 " don't blink and be quiet
 set vb t_vb=
 
-" When nonempty, this option determines the content of the status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 " always show the status line
 set laststatus=2
 
+"-------------------------------------------------------------------------------
+"  Text
+"-------------------------------------------------------------------------------
 
+" none of these should be word dividers, so make them not be
+set iskeyword+=_,$,@,%,#,-,:
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text Formatting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" how automatic formatting is to be done
-set formatoptions=tcrqn
-
-" take indent for new line from previous line
-"set autoindent
-
-" smart autoindenting for C programs
-"set smartindent
-
-" do c-style indenting
-"set cindent
-
-" tab spacing (settings below are just to unify it)
+" tab spacing (others are just to unify it)
 set tabstop=4
-
-" unify
 set softtabstop=4
-
-" unify
 set shiftwidth=4
 
 " don't wrap lines
 set nowrap
 
-" expand tabs to spaces
+" don't expand tabs to spaces
 set noexpandtab
 
-" smarttab = use tabs at the start of a line, spaces elsewhere
+" don't use smarttab (use tabs at the start of a line, spaces elsewhere)
 set nosmarttab
 
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colors
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" my terminal supports 256 colors
-set t_Co=256
-
-" syntax highlighting on
-syntax on
-
-" we are using a dark background
-set background=dark
-
-" use a nice color scheme
-colorscheme monokai
-
-" show a line for when I go over 80 characters (requires vim 7.3+)
-"set colorcolumn=81
-let &colorcolumn=join(range(81,999),",")
-
-" override some of monokai's default colors to suit my preferences
-hi Search ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
-hi ColorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <silent><F3> :NEXTCOLOR<cr>
-map <silent><F2> :PREVCOLOR<cr> 
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Miscellaneous
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------------------------------------
+"  Miscellaneous
+"-------------------------------------------------------------------------------
 
 " update the terminal title when editing a file
 let &titlestring = hostname() . " [vim " . expand("%:p") . "]"
@@ -128,10 +113,10 @@ if &term == "screen" || &term == "xterm"
   set title
 endif
 
-" write the file as root (if i've changed it, but forgot to sudo, just :w!!)
+" Write the file as root; if i've changed it but forgot to sudo, then :w!!
 cmap w!! w !sudo tee > /dev/null %
 
-" remember last line position (from defaults.vim)
+" Remember last line position (from defaults.vim)
 if has("autocmd")
   autocmd BufReadPost *
     \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
