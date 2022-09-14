@@ -9,6 +9,7 @@ alias l='ls -l'
 alias l.='ls -lad .*'
 alias ll='ls -la'
 alias now='date +%Y%m%d%H%M%S'
+alias diff='diff --color'
 
 if builtin command -v batcat &>/dev/null; then
   alias cat='batcat --decorations never --paging never'
