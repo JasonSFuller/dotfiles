@@ -1,5 +1,9 @@
+# include the system-wide defaults
+$include /etc/inputrc
+
 # don't sound the f***ing bell!
 set bell-style none
+
 # so ctrl-arrow works for moving between words
 "\eOD": backward-word
 "\eOC": forward-word
