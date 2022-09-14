@@ -30,7 +30,7 @@ function generate_prompt {
     blu="\[$(tput bold; tput setaf 4)\]"
     rst="\[$(tput sgr0)\]"
 
-    PS1="$title[$grn\u@\h$rst $blu\W$rst]\$ " # add title and color
+    PS1="${title}[${grn}\u@\h${rst} ${blu}\W${rst}]\$ " # add title and color
 
   fi
 
