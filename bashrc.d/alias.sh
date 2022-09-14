@@ -16,4 +16,10 @@ elif builtin command -v bat &>/dev/null; then
   alias cat='bat --decorations never --paging never'
 fi
 
+if builtin command -v vagrant &>/dev/null; then
+  alias v='vagrant'
+fi
 
+if builtin command -v kubectl &>/dev/null; then
+  alias k='kubectl'
+fi
