@@ -22,7 +22,7 @@ function killwithfire {
 	EOF
 }
 
-if [[ ! -z "$TMOUT" ]]; then
+if [[ -n "$TMOUT" ]]; then
   unset TMOUT >&/dev/null || killwithfire
   export TMOUT="36000" # 10 hours
 fi

@@ -13,7 +13,7 @@ if [[ ! -d "$dotfilesdir" ]]; then
   error "directory does not exist ($dotfilesdir)"
 fi
 
-for file in bash_profile bashrc bashrc.d vim vimrc minttyrc gitconfig inputrc; do
+for file in bash_profile bashrc bashrc.d vim vimrc gitconfig inputrc; do
   src="$dotfilesdir/$file"
   dst=".$file"
   if [[ -h "$dst" ]]; then
@@ -34,7 +34,7 @@ for file in bash_profile bashrc bashrc.d vim vimrc minttyrc gitconfig inputrc; d
 done
 
 echo
-if [[ -f $HOME/.ssh/id_* ]]; then
+if stat ~/.ssh/id_* &>/dev/null; then
   info "local ssh keys found"
 fi
 echo -e "\nIf this is a local machine (where you want ssh-agent running), run this:"
