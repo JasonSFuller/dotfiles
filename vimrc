@@ -26,6 +26,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'tomasiser/vim-code-dark'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -65,6 +67,9 @@ set hlsearch
 
 " highlight as you type you search phrase
 set incsearch
+
+" ignore case when you're searching (and other places)
+set ignorecase
 
 " Minimal number of screen lines to keep above and below the cursor
 set scrolloff=99
