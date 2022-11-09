@@ -34,3 +34,5 @@
   username = JasonSFuller
 [core]
   editor = vim
+[init]
+  defaultBranch = main
