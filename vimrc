@@ -91,9 +91,9 @@ set laststatus=2
 set iskeyword+=_,$,@,%,#,-,:
 
 " tab spacing (others are just to unify it)
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 " don't wrap lines
 set nowrap
@@ -128,4 +128,7 @@ if has("autocmd")
     \ |   exe "normal! g`\""
     \ | endif
 endif
+
+" Don't autoindent my YAML lines when inserting a comment.  So annoying!
+autocmd BufEnter *.yaml,*.yml :set indentkeys-=0#
 
