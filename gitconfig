@@ -29,7 +29,11 @@
   # https://blog.sffc.xyz/post/185195398930/why-you-should-use-git-pull-ff-only-git-is-a
   ff = only
 [credential]
-  helper = cache --timeout 3600
+  ### built-in
+  # helper = cache --timeout 3600
+  ### https://github.com/git-ecosystem/git-credential-manager
+  helper = manager
+  credentialStore = secretservice
 [credential "https://github.com"]
   username = JasonSFuller
 [core]
