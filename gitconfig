@@ -30,10 +30,10 @@
   ff = only
 [credential]
   ### built-in
-  # helper = cache --timeout 3600
+  helper = cache --timeout 28800
   ### https://github.com/git-ecosystem/git-credential-manager
-  helper = manager
-  credentialStore = secretservice
+  #helper = manager
+  #credentialStore = secretservice
 [credential "https://github.com"]
   username = JasonSFuller
 [core]
