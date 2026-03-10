@@ -34,12 +34,11 @@ conky.config = {
     use_spacer = 'none',
     use_xft = true,
     font = 'ASAP:bold:size=32',
-    color1 = '666666',
-    color2 = '999999',
-    color3 = 'cccccc'
+    color1 = '999999',
+    color2 = 'cccccc'
 }
 
 conky.text = [[
-${alignr}${color1}${time %a}  ${color2}${time %b %_d}
-${alignr}${color3}${font Bebas Neue:size=72}${time %_I %M %S}$font
+${alignr}${color1}${time %a} ${time %b %_d}
+${alignr}${color2}${font Bebas Neue:size=72}${time %_I %M %S}$font
 ]]
