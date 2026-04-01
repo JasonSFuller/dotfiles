@@ -12,7 +12,7 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     extra_newline = false,
-    gap_x = 1950,
+    gap_x = 1960,
     gap_y = 0,
     minimum_height = 5,
     minimum_width = 5,
@@ -41,5 +41,5 @@ conky.config = {
 
 conky.text = [[
 ${alignr}${color1}${time %a} ${time %b %_d}
-${alignr}${color2}${font Bebas Neue:size=72}${time %_I %M %S}$font
+${voffset -15}${alignr}${color2}${font Bebas Neue:size=72}${time %_I %M %S}$font
 ]]
