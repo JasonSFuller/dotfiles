@@ -12,7 +12,7 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     extra_newline = false,
-    gap_x = 1960,
+    gap_x = 40,
     gap_y = 0,
     minimum_height = 5,
     minimum_width = 5,
@@ -33,13 +33,11 @@ conky.config = {
     update_interval = 1.0,
     use_spacer = 'none',
     use_xft = true,
-    font = 'Permanent Marker:size=48',
-    color1 = '3aafdc',
+    xinerama_head = 2
     -- color1 = 'E9FF32',
-    color2 = 'cccccc'
 }
 
 conky.text = [[
-${alignr}${color1}${time %a} ${time %b %_d}
-${voffset -15}${alignr}${color2}${font Bebas Neue:size=72}${time %_I %M %S}$font
+${alignr}${color #3aafdc}${font Permanent Marker:size=48}${time %a} ${time %b %-d}$font
+${alignr}${color #cccccc}${font Bebas Neue:size=72}${time %_I %M %S}$font
 ]]
