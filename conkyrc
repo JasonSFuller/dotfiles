@@ -33,7 +33,7 @@ conky.config = {
     update_interval = 1.0,
     use_spacer = 'none',
     use_xft = true,
-    xinerama_head = 2
+    xinerama_head = 1
     -- color1 = 'E9FF32',
 }
 
